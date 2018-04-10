@@ -12,37 +12,29 @@
  * @package rwmwop
  */
 
-get_header();
+  get_header();
 ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+<div id="primary" class="content-area">
+  <main id="main" class="site-main">
 
-		<?php
-		if ( have_posts() ) :
+  <?php
+    $args = array('post_type' => 'featured_artwork');
+    $featured = new WP_Query($args);
+    while($featured -> have_posts()) : $featured -> the_post();
+  ?>
+  <div class='featured-work'>
+    <?php the_post_thumbnail(); ?>
+    <div class='desc-plaque'>
+      <span class='catgory'><?php the_category(' '); ?></span>
+      <h1><?php the_title(); ?></h1>
+      <?php the_content(); ?>
+    </div>
+  </div>
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
+  <?php endwhile; ?>
 
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+  </main><!-- #main -->
+</div><!-- #primary -->
 
-			endwhile;
-
-			the_posts_navigation();
-
-		endif;
-		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
-get_sidebar();
-get_footer();
+<?php get_footer(); ?>
