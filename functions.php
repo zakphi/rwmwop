@@ -150,7 +150,8 @@ function create_featured_artwork_post_type() {
     'has_archive' => true,
     'menu_position' => 5,
     'menu_icon' => 'dashicons-admin-appearance',
-    'supports' => array('title', 'editor', 'thumbnail')
+    'supports' => array('title', 'editor', 'thumbnail'),
+    'taxonomies' => array('category'),
   );
   register_post_type( 'featured_artwork', $args);
 }
