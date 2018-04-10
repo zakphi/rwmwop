@@ -156,3 +156,94 @@ function create_featured_artwork_post_type() {
   register_post_type( 'featured_artwork', $args);
 }
 add_action( 'init', 'create_featured_artwork_post_type' );
+
+if ( file_exists( dirname( __FILE__ ) . '/cmb2/init.php' ) ) {
+  require_once dirname( __FILE__ ) . '/cmb2/init.php';
+} elseif ( file_exists( dirname( __FILE__ ) . '/CMB2/init.php' ) ) {
+  require_once dirname( __FILE__ ) . '/CMB2/init.php';
+}
+
+function cmb2_render_dimensions_callback( $field, $value, $object_id, $object_type, $field_type ) {
+
+  $value = wp_parse_args( $value, array(
+    'width' => '',
+    'height' => '',
+  ) );
+
+  ?>
+
+  <div class='image-width'>
+    <p>
+      <label for="<?php echo $field_type->_id( '_width' ); ?>">Width</label>
+    </p>
+    <?php echo $field_type->input( array(
+      'name' => $field_type->_name( '[width]' ),
+      'id' => $field_type->_id( '_width' ),
+      'value' => $value['width'],
+      'desc' => '',
+    ) ); ?>
+  </div>
+
+  <div class='image-height'>
+    <p>
+      <label for="<?php echo $field_type->_id( '_height' ); ?>'">Height</label>
+    </p>
+    <?php echo $field_type->input( array(
+      'name' => $field_type->_name( '[height]' ),
+      'id' => $field_type->_id( '_height' ),
+      'value' => $value['height'],
+      'desc' => '',
+    ) ); ?>
+  </div>
+
+  <?php
+
+  echo $field_type->_desc( true );
+
+}
+add_filter( 'cmb2_render_dimensions', 'cmb2_render_dimensions_callback', 10, 5 );
+
+function art_desc_metabox() {
+
+  $prefix = '_rwmwop_';
+
+  $cmb = new_cmb2_box( array(
+    'id' => 'art_desc',
+    'title' => __( 'Artwork Description', 'cmb2' ),
+    'object_types' => array( 'featured_artwork' ),
+    'context' => 'normal',
+    'priority' => 'high',
+    'show_names' => true
+  ) );
+
+  $cmb->add_field( array(
+    'name' => __( 'Type', 'cmb2' ),
+    'desc' => __( 'Artwork Type', 'cmb2' ),
+    'id' => $prefix . 'type',
+    'type' => 'text'
+  ) );
+
+  $cmb -> add_field( array(
+    'name' => 'Image Size',
+    'desc' => 'Image Size',
+    'id' => $prefix . 'image_size',
+    'type' => 'dimensions',
+    )
+  );
+
+  $cmb->add_field( array(
+    'name' => 'Paper Size',
+    'desc' => 'Paper Size',
+    'id' => $prefix . 'paper_size',
+    'type' => 'dimensions'
+  ) );
+
+  $cmb->add_field( array(
+    'name' => 'Physical Size',
+    'desc' => 'Physical size',
+    'id' => $prefix . 'physical_size',
+    'type' => 'dimensions'
+  ) );
+
+}
+add_action( 'cmb2_admin_init', 'art_desc_metabox' );
