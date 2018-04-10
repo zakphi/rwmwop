@@ -129,3 +129,29 @@ function rwmwop_scripts() {
   }
 }
 add_action( 'wp_enqueue_scripts', 'rwmwop_scripts' );
+
+function create_featured_artwork_post_type() {
+  $labels = array(
+    'name' => __( 'Featured Works' ),
+    'singular_name' => __( 'Featured Work' ),
+    'add_new'             => __( 'Add New' ),
+    'add_new_item'        => __( 'Add New Featured Work' ),
+    'edit_item'           => __( 'Edit Featured Work' ),
+    'new_item'            => __( 'New Featured Work' ),
+    'all_items'           => __( 'All Featured Work' ),
+    'view_item'           => __( 'View Featured Work' ),
+    'search_items'        => __( 'Search Featured Work' ),
+    'not_found'           => __( 'No Featured Work found' ),
+    'not_found_in_trash'  => __( 'No Featured Work found in the Trash' ),
+  );
+  $args = array(
+    'labels' => $labels,
+    'public' => true,
+    'has_archive' => true,
+    'menu_position' => 5,
+    'menu_icon' => 'dashicons-admin-appearance',
+    'supports' => array('title', 'editor', 'thumbnail')
+  );
+  register_post_type( 'featured_artwork', $args);
+}
+add_action( 'init', 'create_featured_artwork_post_type' );
