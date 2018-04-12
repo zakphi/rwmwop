@@ -1,42 +1,31 @@
 <?php
-/**
- * The template for displaying archive pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package rwmwop
- */
+  /**
+   * The template for displaying archive pages
+   *
+   * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+   *
+   * @package rwmwop
+   */
 
-get_header();
+  get_header();
 ?>
 
   <div id="primary" class="content-area">
     <main id="main" class="site-main">
 
-    <?php if ( have_posts() ) : ?>
-
-      <header class="page-header">
-        <?php
-        the_archive_title( '<h1 class="page-title">', '</h1>' );
-        the_archive_description( '<div class="archive-description">', '</div>' );
-        ?>
-      </header><!-- .page-header -->
-
-      <?php
-      /* Start the Loop */
-      while ( have_posts() ) :
-        the_post();
-
-      endwhile;
-
-      the_posts_navigation();
-
-    endif;
+    <?php
+      $currentCategory = get_category($cat);
+      $currentCategory = $currentCategory -> slug;
+      $query = new WP_Query( array( 'category_name' => $currentCategory ) );
+      while($query -> have_posts()) : $query -> the_post();
     ?>
+
+      <h1><?php echo $currentCategory ?></h1>
+      <h2><?php the_title(); ?></h2>
+
+    <?php endwhile; ?>
 
     </main><!-- #main -->
   </div><!-- #primary -->
 
-<?php
-get_sidebar();
-get_footer();
+<?php get_footer(); ?>
