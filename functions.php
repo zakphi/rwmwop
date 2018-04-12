@@ -157,6 +157,14 @@
   }
   add_action( 'init', 'create_featured_artwork_post_type' );
 
+  function namespace_add_custom_types( $query ) {
+    if( (is_category() || is_tag()) && $query->is_archive() && empty( $query->query_vars['suppress_filters'] ) ) {
+      $query->set( 'post_type', array('post', 'featured_artwork') );
+      }
+      return $query;
+  }
+  add_filter( 'pre_get_posts', 'namespace_add_custom_types' );
+
   if ( file_exists( dirname( __FILE__ ) . '/cmb2/init.php' ) ) {
     require_once dirname( __FILE__ ) . '/cmb2/init.php';
   } elseif ( file_exists( dirname( __FILE__ ) . '/CMB2/init.php' ) ) {
