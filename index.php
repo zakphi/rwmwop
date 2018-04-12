@@ -42,7 +42,7 @@
             <div class='plaque'>
               <span class='catgory'><?php the_category(' '); ?></span>
               <h2><?php the_title(); ?></h2>
-              <?php if($type) echo $type; ?>
+              <?php if($type) echo "<h3>{$type}</h3>"; ?>
               <ul>
                 <?php if($image_size_width && $image_size_height) echo "<li>{$image_size_dimensions}</li>"; ?>
                 <?php if($paper_size_width && $paper_size_height) echo "<li>{$paper_size_dimensions}</li>"; ?>
