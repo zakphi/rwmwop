@@ -10,32 +10,32 @@
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main">
 
-		<?php if ( have_posts() ) : ?>
+    <?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
+      <header class="page-header">
+        <?php
+        the_archive_title( '<h1 class="page-title">', '</h1>' );
+        the_archive_description( '<div class="archive-description">', '</div>' );
+        ?>
+      </header><!-- .page-header -->
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+      <?php
+      /* Start the Loop */
+      while ( have_posts() ) :
+        the_post();
 
-			endwhile;
+      endwhile;
 
-			the_posts_navigation();
+      the_posts_navigation();
 
-		endif;
-		?>
+    endif;
+    ?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+    </main><!-- #main -->
+  </div><!-- #primary -->
 
 <?php
 get_sidebar();
