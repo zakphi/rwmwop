@@ -19,11 +19,9 @@
   <main id="main" class="site-main">
 
   <?php
-    $args = array('post_type' => 'featured_artwork');
-    $featured = new WP_Query($args);
-    while($featured -> have_posts()) : $featured -> the_post();
-  ?>
-  <?php
+    $query = new WP_Query( array('post_type' => 'featured_artwork') );
+    while($query -> have_posts()) : $query -> the_post();
+
     $type = get_post_meta( get_the_ID(), '_rwmwop_type', true);
 
     $image_size = get_post_meta( get_the_ID(), '_rwmwop_image_size', true );
