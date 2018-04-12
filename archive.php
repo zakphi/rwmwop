@@ -18,8 +18,8 @@
         $query = new WP_Query( array( 'category_name' => $currentCategory ) );
       ?>
       <?php if($query -> have_posts() ) : ?>
+        <h1><?php echo $currentCategory ?></h1>
         <?php while($query -> have_posts()) : $query -> the_post(); ?>
-          <h1><?php echo $currentCategory ?></h1>
           <h2><?php the_title(); ?></h2>
         <?php endwhile; ?>
       <?php else : ?>
