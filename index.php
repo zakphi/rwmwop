@@ -44,7 +44,7 @@
         <?php the_post_thumbnail(); ?>
         <div class='plaque'>
           <span class='catgory'><?php the_category(' '); ?></span>
-          <h1><?php the_title(); ?></h1>
+          <h2><?php the_title(); ?></h2>
           <?php if($type) echo $type; ?>
           <?php if($image_size_width && $image_size_height) echo $image_size_dimensions; ?>
           <?php if($paper_size_width && $paper_size_height) echo $paper_size_dimensions; ?>
