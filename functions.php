@@ -253,6 +253,13 @@
       'type' => 'dimensions'
     ) );
 
+    $cmb->add_field( array(
+      'name'    => 'Background Color',
+      'id'      => $prefix . 'bg_color',
+      'type'    => 'colorpicker',
+      'default' => '#ffffff',
+    ) );
+
   }
   add_action( 'cmb2_admin_init', 'art_desc_metabox' );
 
