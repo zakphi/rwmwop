@@ -36,8 +36,10 @@
         $physical_size_width = !empty($physical_size['width']) ? $physical_size['width'] : null;
         $physical_size_height = !empty($physical_size['height']) ? $physical_size['height'] : null;
         $physical_size_dimensions = "{$physical_size_width}\" x {$physical_size_height}\" physical size";
+
+        $bg_color = get_post_meta( get_the_id(), '_rwmwop_bg_color', true);
       ?>
-        <div class='featured-work'>
+        <div class='featured-work' style="background-color: <?php echo $bg_color ?>;">
           <?php the_post_thumbnail(); ?>
           <div class='plaque'>
             <span class='catgory'><?php the_category(' '); ?></span>
