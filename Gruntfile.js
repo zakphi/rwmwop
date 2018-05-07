@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     browserSync: {
       bsFiles: {
         src: [
-          'style.css',
+          'css/style.css',
           '*.php',
           '*.html',
           'js/*.js',
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
       options: {
         csslintrc: '.csslintrc'
       },
-      src: ['style.css']
+      src: 'css/style.css'
     },
     jshint: {
       gruntfile: {
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
         options: {
           jshintrc: '.jshintrc'
         },
-        src: ['js/main.js']
+        src: 'js/main.js'
       },
     },
     stylus: {
@@ -59,7 +59,7 @@ module.exports = function(grunt) {
           linenos: false
         },
         files: {
-          'style.css': ['style.styl']
+          'css/style.css': 'css/style.styl'
         }
       }
     },
@@ -69,23 +69,25 @@ module.exports = function(grunt) {
       },
       my_target: {
         files: {
-          'js/min.js': ['js/min.js']
+          'js/min.js': 'js/min.js'
         }
       }
     },
     watch: {
-      files:['style.styl'],
-      tasks: ['stylus'],
+      stylus: {
+        files: 'css/style.styl',
+        tasks: 'stylus'
+      },
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
-        tasks: ['jshint']
+        tasks: 'jshint'
       },
       all: {
         files: '<%= jshint.all.src %>',
-        tasks: ['jshint']
+        tasks: 'jshint'
       },
       js: {
-        files: ['js/main.js'],
+        files: 'js/main.js',
         tasks: ['concat', 'uglify']
       },
     }
