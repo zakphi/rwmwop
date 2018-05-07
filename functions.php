@@ -120,7 +120,7 @@
    * Enqueue scripts and styles.
    */
   function rwmwop_scripts() {
-    wp_enqueue_style( 'rwmwop-style', get_stylesheet_uri() );
+    wp_enqueue_style( 'style', get_template_directory_uri() . '/css/style.css', '20180507' );
 
     wp_enqueue_script( 'rwmwop-skip-link-focus-fix', get_template_directory_uri() . '/js/min.js', '20180413', true );
 
