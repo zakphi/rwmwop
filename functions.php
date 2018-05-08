@@ -218,7 +218,7 @@
     $cmb = new_cmb2_box( array(
       'id' => 'art_desc',
       'title' => __( 'Artwork Description', 'cmb2' ),
-      'object_types' => array( 'featured_artwork' ),
+      'object_types' => array( 'featured_artwork', 'post' ),
       'context' => 'normal',
       'priority' => 'high',
       'show_names' => true
