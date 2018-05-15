@@ -15,10 +15,12 @@
     <?php
       $currentCategory = get_category($cat);
       $currentCategory = $currentCategory -> slug;
+      $currentCategoryID = $currentCategory -> term_id;
       $query = new WP_Query( array( 'category_name' => $currentCategory ) );
     ?>
     <?php if($query -> have_posts() ) : ?>
       <h1><?php echo $currentCategory ?></h1>
+      <?php echo category_description($currentCategoryID); ?>
       <?php while($query -> have_posts()) : $query -> the_post();
         $type = get_post_meta( get_the_ID(), '_rwmwop_type', true);
 
