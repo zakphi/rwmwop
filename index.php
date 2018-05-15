@@ -17,7 +17,13 @@
 
 <div id="primary" class="content-area">
   <main id="main" class="site-main">
-    <?php $query = new WP_Query( array('post_type' => 'featured_artwork') ); ?>
+    <?php
+      $args = array(
+        'post_type' => 'featured_artwork',
+        'posts_per_page' => 5
+      );
+      $query = new WP_Query( $args );
+    ?>
     <?php if($query -> have_posts() ) : ?>
       <?php while($query -> have_posts()) : $query -> the_post();
         $type = get_post_meta( get_the_ID(), '_rwmwop_type', true);
