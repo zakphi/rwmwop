@@ -225,7 +225,7 @@
     ) );
 
     $cmb->add_field( array(
-      'name' => __( 'Type', 'cmb2' ),
+      'name' => __( 'Artwork Type', 'cmb2' ),
       'desc' => __( 'Artwork Type', 'cmb2' ),
       'id' => $prefix . 'type',
       'type' => 'text'
