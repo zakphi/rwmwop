@@ -122,7 +122,7 @@
   function rwmwop_scripts() {
     wp_enqueue_style( 'style', get_template_directory_uri() . '/css/style.css', '20180507' );
 
-    wp_enqueue_script( 'rwmwop-min', get_template_directory_uri() . '/js/min.js', '20180413', true );
+    wp_enqueue_script( 'rwmwop-min', get_template_directory_uri() . '/js/min.js', array(), '20180413', true );
 
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
       wp_enqueue_script( 'comment-reply' );
