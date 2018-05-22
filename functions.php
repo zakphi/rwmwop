@@ -120,6 +120,7 @@
    * Enqueue scripts and styles.
    */
   function rwmwop_scripts() {
+    wp_enqueue_style( 'normalize', get_template_directory_uri() . '/css/normalize.css', '20180507' );
     wp_enqueue_style( 'style', get_template_directory_uri() . '/css/style.css', '20180507' );
 
     wp_enqueue_script( 'rwmwop-min', get_template_directory_uri() . '/js/min.js', array(), '20180413', true );
