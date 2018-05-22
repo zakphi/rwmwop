@@ -53,6 +53,7 @@
           </div>
         </div>
       <?php endwhile; ?>
+      <div id="modal"></div><!-- #modal -->
     <?php else : ?>
       <h1>no posts found</h1>
     <?php endif; ?>
