@@ -159,6 +159,32 @@
   }
   add_action( 'init', 'create_featured_artwork_post_type' );
 
+  function create_announcements_post_type() {
+    $labels = array(
+      'name' => __( 'Announcements' ),
+      'singular_name' => __( 'Announcement' ),
+      'add_new' => __( 'Add New' ),
+      'add_new_item' => __( 'Add New Announcement' ),
+      'edit_item' => __( 'Edit Announcement' ),
+      'new_item' => __( 'New Announcement' ),
+      'all_items' => __( 'All Announcement' ),
+      'view_item' => __( 'View Announcement' ),
+      'search_items' => __( 'Search Announcement' ),
+      'not_found' => __( 'No Announcement found' ),
+      'not_found_in_trash' => __( 'No Announcement found in the Trash' ),
+    );
+    $args = array(
+      'labels' => $labels,
+      'public' => true,
+      'has_archive' => true,
+      'menu_position' => 5,
+      'menu_icon' => 'dashicons-megaphone',
+      'supports' => array('title', 'editor'),
+    );
+    register_post_type( 'announcements', $args);
+  }
+  add_action( 'init', 'create_announcements_post_type' );
+
   function namespace_add_custom_types( $query ) {
     if( (is_category() || is_tag()) && $query->is_archive() && empty( $query->query_vars['suppress_filters'] ) ) {
       $query->set( 'post_type', array('post', 'featured_artwork') );
@@ -210,11 +236,9 @@
     <?php echo $field_type->_desc( true ); ?>
 <?php
   }
-
   add_filter( 'cmb2_render_dimensions', 'cmb2_render_dimensions_callback', 10, 5 );
 
   function art_desc_metabox() {
-
     $prefix = '_rwmwop_';
 
     $cmb = new_cmb2_box( array(
