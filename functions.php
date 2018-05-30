@@ -179,7 +179,7 @@
       'has_archive' => true,
       'menu_position' => 5,
       'menu_icon' => 'dashicons-megaphone',
-      'supports' => array('title', 'editor'),
+      'supports' => 'title',
     );
     register_post_type( 'announcements', $args);
   }
