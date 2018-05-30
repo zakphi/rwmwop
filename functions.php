@@ -289,4 +289,38 @@
   }
   add_action( 'cmb2_admin_init', 'art_desc_metabox' );
 
+  function annoucements_metabox() {
+    $prefix = '_rwmwop_';
+
+    $cmb = new_cmb2_box( array(
+      'id' => 'announcements',
+      'title' => __( 'Announcement Details', 'cmb2' ),
+      'object_types' => array( 'announcements' ),
+      'context' => 'normal',
+      'priority' => 'high',
+      'show_names' => true
+    ) );
+
+    $cmb->add_field( array(
+      'name' => 'Start Date',
+      'id'   => 'start_date',
+      'type' => 'text_date_timestamp'
+    ) );
+
+    $cmb->add_field( array(
+      'name' => 'End Date',
+      'id'   => 'end_date',
+      'type' => 'text_date_timestamp'
+    ) );
+
+    $cmb->add_field( array(
+      'name' => 'Specific Details',
+      'desc' => 'Specific Details (e.g. location, time)',
+      'id' => 'specific_details',
+      'type' => 'textarea_small'
+    ) );
+
+  }
+  add_action( 'cmb2_admin_init', 'annoucements_metabox' );
+
 ?>
