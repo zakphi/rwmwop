@@ -303,20 +303,20 @@
 
     $cmb->add_field( array(
       'name' => 'Start Date',
-      'id'   => 'start_date',
+      'id'   => $prefix . 'start_date',
       'type' => 'text_date_timestamp'
     ) );
 
     $cmb->add_field( array(
       'name' => 'End Date',
-      'id'   => 'end_date',
+      'id'   => $prefix . 'end_date',
       'type' => 'text_date_timestamp'
     ) );
 
     $cmb->add_field( array(
       'name' => 'Specific Details',
       'desc' => 'Specific Details (e.g. location, time)',
-      'id' => 'specific_details',
+      'id' => $prefix . 'specific_details',
       'type' => 'textarea_small'
     ) );
 
