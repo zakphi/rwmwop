@@ -1,21 +1,19 @@
-let modal = document.getElementById('modal')
+let modal = document.querySelector('.modal')
+let workImg = document.querySelectorAll('.archive-work img')
+let closeBtn = document.querySelector('.close-btn')
 
-function showModal(){
+function toggleModal(){
+  modal.classList.toggle('show-modal')
+
   let modalContent = this.parentNode
 
-  if(!document.querySelectorAll('#modal .archive-work').length){
-    modal.style.visibility = 'visible'
-    modal.appendChild(modalContent.cloneNode(true))
+  if(!document.querySelectorAll('.modal .archive-work').length){
+    modal.prepend(modalContent.cloneNode(true))
+    document.querySelector('.modal .archive-work').prepend(closeBtn)
+  } else {
+    modal.removeChild(document.querySelector('.modal .archive-work'))
   }
 }
 
-let workImg = document.querySelectorAll('.archive-work img')
-workImg.forEach(element => element.onclick = showModal)
-
-function hideModal(){
-  modal.style.visibility = 'hidden'
-  modal.removeChild(document.querySelector('#modal .archive-work'))
-}
-
-let closeBtn = document.getElementById('close-btn')
-closeBtn.onclick = hideModal
+workImg.forEach(element => element.onclick = toggleModal)
+closeBtn.onclick = toggleModal

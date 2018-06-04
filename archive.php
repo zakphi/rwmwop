@@ -54,8 +54,8 @@
             </div>
           </div>
         <?php endwhile; ?>
-        <div id="modal">
-          <button id="close-btn">close</button>
+        <div class="modal">
+          <span class="close-btn">&times;</span>
         </div><!-- #modal -->
       <?php else : ?>
         <h1>no posts found</h1>
