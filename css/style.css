@@ -29,3 +29,11 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
   text-align: center;
   z-index: 1000;
 }
+
+#archived-work .archive-work .plaque{
+  display: none;
+}
+
+#archived-work #modal .archive-work .plaque{
+  display: block;
+}
