@@ -12,16 +12,16 @@
 
 <div id="primary" class="content-area">
   <main id="main" class="site-main">
-    <div id="archived-work">
-      <?php
-        $currentCategory = get_category($cat);
-        $currentCategory = $currentCategory -> slug;
-        $currentCategoryID = $currentCategory -> term_id;
-        $query = new WP_Query( array( 'category_name' => $currentCategory ) );
-      ?>
-      <?php if($query -> have_posts() ) : ?>
-        <h1><?php echo $currentCategory ?></h1>
-        <?php echo category_description($currentCategoryID); ?>
+    <?php
+      $currentCategory = get_category($cat);
+      $currentCategory = $currentCategory -> slug;
+      $currentCategoryID = $currentCategory -> term_id;
+      $query = new WP_Query( array( 'category_name' => $currentCategory ) );
+    ?>
+    <?php if($query -> have_posts() ) : ?>
+      <h1><?php echo $currentCategory ?></h1>
+      <?php echo category_description($currentCategoryID); ?>
+      <div id="archived-work">
         <?php while($query -> have_posts()) : $query -> the_post();
           $type = get_post_meta( get_the_ID(), '_rwmwop_type', true);
 
@@ -54,13 +54,13 @@
             </div>
           </div>
         <?php endwhile; ?>
-        <div class="modal">
-          <span class="close-btn">&times;</span>
-        </div><!-- #modal -->
-      <?php else : ?>
-        <h1>no posts found</h1>
-      <?php endif; ?>
-    </div><!-- /#archived-work -->
+      </div><!-- /#archived-work -->
+      <div class="modal">
+        <span class="close-btn">&times;</span>
+      </div><!-- #modal -->
+    <?php else : ?>
+      <h1>no posts found</h1>
+    <?php endif; ?>
   </main><!-- #main -->
 </div><!-- #primary -->
 
